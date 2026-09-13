@@ -1,0 +1,23 @@
+# dependencies / build
+app/node_modules
+app/dist
+*.log
+
+# runtime state (SQLite db lives here)
+app/server/data
+
+# intermediate working artifacts (frames extracted from recordings)
+analysis/
+
+# plugin cache
+.v2c/
+
+# recordings: original-site capture + clone demo capture are large; keep the mp4 deliverables only
+recordings/*.webm
+
+# OS
+.DS_Store
+
+# deliverables kept locally only (evidence of the build process; not part of the product repo)
+recordings/
+out/
