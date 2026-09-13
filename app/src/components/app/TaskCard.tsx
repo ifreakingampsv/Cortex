@@ -48,8 +48,8 @@ export default function TaskCard({ issue, onToggleDone }: { issue: Issue; onTogg
       onDragStart={(e) => setIssueDrag(e, issue)}
       onClick={() => openTask(issue.id)}
       data-testid="task-card"
-      className={`group cursor-pointer rounded-lg border bg-white px-2.5 py-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:shadow-md hover:border-stone-300 ${
-        done ? 'border-stone-100 bg-stone-50' : 'border-stone-200'
+      className={`group cursor-pointer rounded-lg border bg-[#101024] px-2.5 py-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:shadow-md hover:border-white/20 ${
+        done ? 'border-white/[0.07] bg-[#101024]/[0.03]' : 'border-white/10'
       }`}
     >
       <div className="flex items-start gap-2">
@@ -58,7 +58,7 @@ export default function TaskCard({ issue, onToggleDone }: { issue: Issue; onTogg
           aria-label={done ? 'Mark as not done' : 'Mark done'}
           onClick={toggle}
           className={`mt-[1px] flex h-[15px] w-[15px] shrink-0 items-center justify-center rounded-full border-[1.5px] transition ${
-            done ? 'border-[#5FC48F] bg-[#5FC48F]' : 'border-stone-300 hover:border-[#5FC48F]'
+            done ? 'border-[#5FC48F] bg-[#5FC48F]' : 'border-white/20 hover:border-[#5FC48F]'
           }`}
         >
           {done && (
@@ -67,20 +67,20 @@ export default function TaskCard({ issue, onToggleDone }: { issue: Issue; onTogg
         </button>
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <p className={`text-[13px] font-medium leading-snug text-stone-800 ${done ? 'line-through text-stone-400' : ''}`}>
+            <p className={`text-[13px] font-medium leading-snug text-slate-200 ${done ? 'line-through text-slate-600' : ''}`}>
               {issue.title}
             </p>
-            <span className="shrink-0 rounded bg-stone-100 px-1.5 py-px text-[10px] font-semibold text-stone-500">
+            <span className="shrink-0 rounded bg-[#101024]/10 px-1.5 py-px text-[10px] font-semibold text-slate-500">
               {fmtMinutes(issue.duration_minutes || issue.estimate_minutes)}
             </span>
           </div>
           {issue.subtasksTotal > 0 && (
-            <p className="mt-0.5 text-[11px] text-stone-400">
+            <p className="mt-0.5 text-[11px] text-slate-600">
               ☑ {issue.subtasksDone}/{issue.subtasksTotal} subtasks
             </p>
           )}
           {issue.start_time && (
-            <p className="mt-0.5 text-[11px] font-semibold text-stone-500">
+            <p className="mt-0.5 text-[11px] font-semibold text-slate-500">
               <span className="mr-1 inline-block h-1.5 w-1.5 rounded-full align-middle" style={{ background: issue.project_color ?? '#7CA6F0' }} />
               {fmtTime12(issue.start_time)}{issue.duration_minutes ? ` – ${fmtMinutes(issue.duration_minutes)}` : ''}
             </p>
@@ -93,7 +93,7 @@ export default function TaskCard({ issue, onToggleDone }: { issue: Issue; onTogg
                   #{l.name}
                 </span>
               ))}
-              {issue.commentCount > 0 && <span className="text-[10.5px] text-stone-400">💬 {issue.commentCount}</span>}
+              {issue.commentCount > 0 && <span className="text-[10.5px] text-slate-600">💬 {issue.commentCount}</span>}
             </div>
           )}
         </div>

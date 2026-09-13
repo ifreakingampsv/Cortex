@@ -105,16 +105,16 @@ export default function Focus() {
   return (
     <div className="flex h-full flex-col items-center overflow-y-auto px-4 py-8 app-scroll">
       <div className="w-full max-w-lg">
-        <h1 className="text-center text-2xl font-bold tracking-tight text-stone-900">Focus mode</h1>
-        <p className="mt-1 text-center text-[13.5px] text-stone-500">Work in 25-minute pomodoro sprints. Finished sessions are logged as time entries.</p>
+        <h1 className="text-center text-2xl font-bold tracking-tight text-slate-100">Focus mode</h1>
+        <p className="mt-1 text-center text-[13.5px] text-slate-500">Work in 25-minute pomodoro sprints. Finished sessions are logged as time entries.</p>
 
         <div className="mt-6">
-          <label className="text-[11px] font-bold tracking-wide text-stone-400">WORKING ON</label>
+          <label className="text-[11px] font-bold tracking-wide text-slate-600">WORKING ON</label>
           <select
             value={selectedId}
             onChange={(e) => setSelectedId(e.target.value)}
             data-testid="focus-task-select"
-            className="mt-1 w-full rounded-xl border border-stone-200 bg-white px-3.5 py-3 text-[14px] font-semibold text-stone-800 outline-none focus:border-[#F2742D]"
+            className="mt-1 w-full rounded-xl border border-white/10 bg-[#101024] px-3.5 py-3 text-[14px] font-semibold text-slate-200 outline-none focus:border-[#7C5CFC]"
           >
             <option value="">Select a task…</option>
             {candidates.map((c) => (
@@ -123,15 +123,15 @@ export default function Focus() {
           </select>
         </div>
 
-        <div className="mt-6 rounded-3xl bg-stone-900 px-8 py-10 text-center shadow-2xl" data-testid="focus-timer">
-          <p className={`text-[11px] font-bold tracking-[0.2em] ${mode === 'focus' ? 'text-[#F6A03C]' : 'text-[#5FC48F]'}`}>
+        <div className="mt-6 rounded-3xl bg-[#0A0A1C] px-8 py-10 text-center shadow-2xl" data-testid="focus-timer">
+          <p className={`text-[11px] font-bold tracking-[0.2em] ${mode === 'focus' ? 'text-[#8B5CF6]' : 'text-[#5FC48F]'}`}>
             {mode === 'focus' ? 'FOCUS' : 'BREAK'}
           </p>
           <p className="mt-2 font-mono text-[64px] font-bold leading-none text-white tabular-nums" data-testid="timer-display">
             {mm}:{ss}
           </p>
-          <div className="mx-auto mt-4 h-1.5 w-56 overflow-hidden rounded-full bg-stone-700">
-            <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${pct * 100}%`, background: mode === 'focus' ? '#F2742D' : '#5FC48F' }} />
+          <div className="mx-auto mt-4 h-1.5 w-56 overflow-hidden rounded-full bg-[#101024]/10">
+            <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${pct * 100}%`, background: mode === 'focus' ? '#7C5CFC' : '#5FC48F' }} />
           </div>
           <div className="mt-7 flex items-center justify-center gap-3">
             <button
@@ -145,26 +145,26 @@ export default function Focus() {
             <button
               type="button"
               onClick={() => { setRunning(false); setSecondsLeft(mode === 'focus' ? FOCUS_SECONDS : BREAK_SECONDS) }}
-              className="h-11 rounded-full border border-stone-600 px-5 text-[14px] font-semibold text-stone-300 transition hover:bg-stone-800"
+              className="h-11 rounded-full border-white/20 px-5 text-[14px] font-semibold text-slate-400 transition hover:bg-white/10"
             >
               Reset
             </button>
             <button
               type="button"
               onClick={() => { setRunning(false); finishTimer(true) }}
-              className="h-11 rounded-full border border-stone-600 px-5 text-[14px] font-semibold text-stone-300 transition hover:bg-stone-800"
+              className="h-11 rounded-full border-white/20 px-5 text-[14px] font-semibold text-slate-400 transition hover:bg-white/10"
             >
               End &amp; log
             </button>
           </div>
         </div>
 
-        <div className="mt-5 flex items-center justify-between rounded-xl border border-stone-200 bg-white px-4 py-3">
-          <div className="text-[13px] text-stone-600">
-            <p><span className="font-bold text-stone-800">{sessionsDone}</span> sessions logged</p>
-            <p className="text-stone-400">{fmtMinutes(Math.round(elapsedFocus / 60))} focus time this visit</p>
+        <div className="mt-5 flex items-center justify-between rounded-xl border border-white/10 bg-[#101024] px-4 py-3">
+          <div className="text-[13px] text-slate-400">
+            <p><span className="font-bold text-slate-200">{sessionsDone}</span> sessions logged</p>
+            <p className="text-slate-600">{fmtMinutes(Math.round(elapsedFocus / 60))} focus time this visit</p>
           </div>
-          <button type="button" disabled={!selected} onClick={completeTask} className="btn-orange h-10 px-5 text-[14px] disabled:cursor-not-allowed disabled:bg-stone-200 disabled:text-stone-400 disabled:shadow-none">
+          <button type="button" disabled={!selected} onClick={completeTask} className="btn-orange h-10 px-5 text-[14px] disabled:cursor-not-allowed disabled:bg-indigo-500/15 disabled:text-slate-600 disabled:shadow-none">
             Complete task
           </button>
         </div>

@@ -36,15 +36,15 @@ export default function CalendarPanel({
   }
 
   return (
-    <div className="flex h-full w-[290px] shrink-0 flex-col border-l border-stone-200/70 bg-white" data-testid="calendar-panel">
-      <div className="flex items-baseline justify-between border-b border-stone-100 px-4 py-3">
+    <div className="flex h-full w-[290px] shrink-0 flex-col border-l border-white/10 bg-[#101024]" data-testid="calendar-panel">
+      <div className="flex items-baseline justify-between border-b border-white/[0.07] px-4 py-3">
         <div>
-          <p className="text-[10px] font-bold tracking-widest text-stone-400">
+          <p className="text-[10px] font-bold tracking-widest text-slate-600">
             {new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}
           </p>
-          <p className="text-2xl font-bold leading-none text-stone-800">{Number(date.slice(8, 10))}</p>
+          <p className="text-2xl font-bold leading-none text-slate-200">{Number(date.slice(8, 10))}</p>
         </div>
-        <p className="text-[11px] font-medium text-stone-400">{new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
+        <p className="text-[11px] font-medium text-slate-600">{new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
       </div>
 
       <div className="relative flex-1 overflow-y-auto app-scroll" style={{ height }}>
@@ -54,10 +54,10 @@ export default function CalendarPanel({
             const h24 = Math.floor(min / 60) % 24
             return (
               <div key={min} className="absolute left-0 right-0 flex items-start gap-1.5" style={{ top: (min - DAY_START) * PX_PER_MIN }}>
-                <span className="w-10 shrink-0 pt-[-4px] text-right text-[9.5px] font-medium text-stone-400">
+                <span className="w-10 shrink-0 pt-[-4px] text-right text-[9.5px] font-medium text-slate-600">
                   {h24 === 0 ? '12 AM' : h24 < 12 ? `${h24} AM` : h24 === 12 ? '12 PM' : `${h24 - 12} PM`}
                 </span>
-                <span className="mt-[5px] h-px flex-1 bg-stone-100" />
+                <span className="mt-[5px] h-px flex-1 bg-[#101024]/10" />
               </div>
             )
           })}
@@ -76,7 +76,7 @@ export default function CalendarPanel({
                 style={{ top: (min - DAY_START) * PX_PER_MIN, height: 30 * PX_PER_MIN }}
               >
                 {dragOverSlot === slotId && (
-                  <div className="h-full rounded-md border-2 border-dashed border-[#F2742D]/60 bg-orange-50/70" />
+                  <div className="h-full rounded-md border-2 border-dashed border-[#7C5CFC]/60 bg-indigo-500/10" />
                 )}
               </div>
             )
@@ -124,7 +124,7 @@ export default function CalendarPanel({
           })}
         </div>
       </div>
-      <p className="border-t border-stone-100 px-4 py-2 text-[11px] text-stone-400">Drag a task onto the grid to timebox it</p>
+      <p className="border-t border-white/[0.07] px-4 py-2 text-[11px] text-slate-600">Drag a task onto the grid to timebox it</p>
     </div>
   )
 }

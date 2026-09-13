@@ -45,11 +45,11 @@ export default function Board() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between border-b border-stone-200/70 bg-white/60 px-5 py-2.5">
+      <div className="flex items-center justify-between border-b border-white/10 bg-[#101024]/60 px-5 py-2.5">
         <div className="flex items-center gap-3">
-          <Link to="/app" className="rounded-md px-3 py-1.5 text-[13px] font-semibold text-stone-500 transition hover:bg-stone-100">☰ Today</Link>
-          <span className="rounded-md bg-stone-200/70 px-3 py-1.5 text-[13px] font-bold text-stone-800">⊞ Board</span>
-          <h1 className="ml-2 text-[15px] font-bold text-stone-800">
+          <Link to="/app" className="rounded-md px-3 py-1.5 text-[13px] font-semibold text-slate-500 transition hover:bg-[#101024]/10">☰ Today</Link>
+          <span className="rounded-md bg-indigo-500/15 px-3 py-1.5 text-[13px] font-bold text-slate-200">⊞ Board</span>
+          <h1 className="ml-2 text-[15px] font-bold text-slate-200">
             {project ? (
               <span className="inline-flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-[3px]" style={{ background: project.color }} />
@@ -58,13 +58,13 @@ export default function Board() {
             ) : 'All work'}
           </h1>
         </div>
-        <p className="text-[12px] text-stone-400">{issues.length} issues · drag cards between columns</p>
+        <p className="text-[12px] text-slate-600">{issues.length} issues · drag cards between columns</p>
       </div>
 
       <div className="flex min-h-0 flex-1 gap-4 overflow-x-auto p-4 app-scroll">
         {loading && (
           <div className="flex w-full items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-stone-200 border-t-[#F2742D]" />
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/10 border-t-[#7C5CFC]" />
           </div>
         )}
         {statuses.map((s, ci) => {
@@ -82,22 +82,22 @@ export default function Board() {
                 if (id) move(id, s.id)
               }}
               className={`flex w-[272px] shrink-0 flex-col rounded-xl border p-3 transition ${
-                dragOver === s.id ? 'border-[#F2742D] bg-orange-50/60' : 'border-stone-200/70 bg-white/50'
+                dragOver === s.id ? 'border-[#7C5CFC] bg-indigo-500/10' : 'border-white/10 bg-[#101024]/[0.03]'
               }`}
             >
               <div className="mb-3 flex items-center justify-between px-1">
-                <p className="flex items-center gap-2 text-[13px] font-bold text-stone-800">
+                <p className="flex items-center gap-2 text-[13px] font-bold text-slate-200">
                   <span
                     className="h-2 w-2 rounded-full"
-                    style={{ background: s.category === 'completed' ? '#22C55E' : s.category === 'started' ? '#F0A742' : s.category === 'backlog' ? '#A8A29E' : '#7CA6F0' }}
+                    style={{ background: s.category === 'completed' ? '#22C55E' : s.category === 'started' ? '#F0A742' : s.category === 'backlog' ? '#62628A' : '#7CA6F0' }}
                   />
                   {s.name}
                 </p>
-                <span className="rounded-full bg-stone-200/60 px-2 py-0.5 text-[11px] font-bold text-stone-500">{list.length}</span>
+                <span className="rounded-full bg-indigo-500/15 px-2 py-0.5 text-[11px] font-bold text-slate-500">{list.length}</span>
               </div>
               <div className="min-h-0 flex-1 space-y-2 overflow-y-auto app-scroll">
                 {list.map((i) => <TaskCard key={i.id} issue={i} onToggleDone={load} />)}
-                {list.length === 0 && <p className="pt-3 text-center text-[12px] text-stone-300">Drop tasks here</p>}
+                {list.length === 0 && <p className="pt-3 text-center text-[12px] text-slate-700">Drop tasks here</p>}
               </div>
             </div>
           )

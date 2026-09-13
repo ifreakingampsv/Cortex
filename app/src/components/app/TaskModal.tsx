@@ -124,20 +124,20 @@ export default function TaskModal() {
   const done = Boolean(issue?.completed_at)
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-stone-900/40 p-4 backdrop-blur-[2px]" onMouseDown={(e) => { if (e.target === e.currentTarget) closeTask() }}>
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#04040A]/70 p-4 backdrop-blur-[2px]" onMouseDown={(e) => { if (e.target === e.currentTarget) closeTask() }}>
       <div
         data-testid="task-modal"
-        className="my-6 w-full max-w-2xl rounded-2xl bg-white shadow-2xl"
+        className="my-6 w-full max-w-2xl rounded-2xl bg-[#101024] shadow-2xl"
         style={{ animation: 'reveal .18s ease-out both' }}
       >
         {!issue ? (
-          <div className="flex h-48 items-center justify-center text-stone-400">
-            <div className="h-7 w-7 animate-spin rounded-full border-2 border-stone-200 border-t-[#F2742D]" />
+          <div className="flex h-48 items-center justify-center text-slate-600">
+            <div className="h-7 w-7 animate-spin rounded-full border-2 border-white/10 border-t-[#7C5CFC]" />
           </div>
         ) : (
           <>
             {/* header */}
-            <div className="flex items-start justify-between gap-4 border-b border-stone-100 px-6 py-4">
+            <div className="flex items-start justify-between gap-4 border-b border-white/[0.07] px-6 py-4">
               <div className="min-w-0 flex-1">
                 <input
                   ref={titleRef}
@@ -145,16 +145,16 @@ export default function TaskModal() {
                   onChange={(e) => setTitle(e.target.value)}
                   onBlur={commitTitle}
                   onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); commitTitle(); titleRef.current?.blur() } }}
-                  className="w-full bg-transparent text-lg font-bold text-stone-900 outline-none"
+                  className="w-full bg-transparent text-lg font-bold text-slate-100 outline-none"
                 />
-                <p className="mt-0.5 text-xs text-stone-400">
+                <p className="mt-0.5 text-xs text-slate-600">
                   {issue.project_name ? `${issue.project_name} · ` : ''}created {relTime(issue.created_at)}
-                  {saving && <span className="ml-2 text-[#EA6A2C]">saving…</span>}
+                  {saving && <span className="ml-2 text-[#A5B4FC]">saving…</span>}
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <button type="button" onClick={remove} className="rounded-md px-2 py-1.5 text-sm font-medium text-stone-400 transition hover:bg-red-50 hover:text-red-500">Delete</button>
-                <button type="button" onClick={closeTask} aria-label="Close" className="rounded-md px-2 py-1.5 text-stone-400 transition hover:bg-stone-100 hover:text-stone-700">✕</button>
+                <button type="button" onClick={remove} className="rounded-md px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-red-50 hover:text-red-500">Delete</button>
+                <button type="button" onClick={closeTask} aria-label="Close" className="rounded-md px-2 py-1.5 text-slate-600 transition hover:bg-[#101024]/10 hover:text-slate-300">✕</button>
               </div>
             </div>
 
@@ -167,17 +167,17 @@ export default function TaskModal() {
                   onBlur={commitDescription}
                   placeholder="Add a description…"
                   rows={3}
-                  className="w-full resize-none rounded-lg border border-stone-200 px-3 py-2 text-[13.5px] text-stone-700 outline-none transition focus:border-[#F2742D]"
+                  className="w-full resize-none rounded-lg border border-white/10 px-3 py-2 text-[13.5px] text-slate-300 outline-none transition focus:border-[#7C5CFC]"
                 />
 
-                <h4 className="mt-5 text-[13px] font-bold text-stone-800">
-                  Subtasks {detail!.subtasks.length > 0 && <span className="font-medium text-stone-400">{detail!.subtasks.filter((s) => s.completed_at).length}/{detail!.subtasks.length}</span>}
+                <h4 className="mt-5 text-[13px] font-bold text-slate-200">
+                  Subtasks {detail!.subtasks.length > 0 && <span className="font-medium text-slate-600">{detail!.subtasks.filter((s) => s.completed_at).length}/{detail!.subtasks.length}</span>}
                 </h4>
                 <div className="mt-2 space-y-1.5">
                   {detail!.subtasks.map((st) => (
-                    <label key={st.id} className="flex items-center gap-2.5 rounded-lg border border-stone-100 bg-stone-50/60 px-3 py-2">
-                      <input type="checkbox" checked={Boolean(st.completed_at)} onChange={() => toggleSubtask(st)} className="h-3.5 w-3.5 accent-[#F2742D]" />
-                      <span className={`text-[13px] ${st.completed_at ? 'text-stone-400 line-through' : 'text-stone-700'}`}>{st.title}</span>
+                    <label key={st.id} className="flex items-center gap-2.5 rounded-lg border border-white/[0.07] bg-[#101024]/[0.04] px-3 py-2">
+                      <input type="checkbox" checked={Boolean(st.completed_at)} onChange={() => toggleSubtask(st)} className="h-3.5 w-3.5 accent-[#7C5CFC]" />
+                      <span className={`text-[13px] ${st.completed_at ? 'text-slate-600 line-through' : 'text-slate-300'}`}>{st.title}</span>
                     </label>
                   ))}
                   <div className="flex gap-2">
@@ -186,57 +186,57 @@ export default function TaskModal() {
                       onChange={(e) => setSubtaskText(e.target.value)}
                       onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addSubtask() } }}
                       placeholder="+ Add subtask, press Enter"
-                      className="min-w-0 flex-1 rounded-lg border border-dashed border-stone-300 px-3 py-2 text-[13px] outline-none transition focus:border-[#F2742D]"
+                      className="min-w-0 flex-1 rounded-lg border border-dashed border-white/20 px-3 py-2 text-[13px] outline-none transition focus:border-[#7C5CFC]"
                     />
                   </div>
                 </div>
 
-                <h4 className="mt-6 text-[13px] font-bold text-stone-800">Comments</h4>
+                <h4 className="mt-6 text-[13px] font-bold text-slate-200">Comments</h4>
                 <div className="mt-2 space-y-3">
                   {detail!.comments.map((c) => (
                     <div key={c.id} className="flex gap-2.5">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white" style={{ background: c.author_color ?? '#A8A29E' }}>
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white" style={{ background: c.author_color ?? '#62628A' }}>
                         {c.author_name ? initials(c.author_name) : '?'}
                       </span>
-                      <div className="min-w-0 flex-1 rounded-lg bg-stone-50 px-3 py-2">
+                      <div className="min-w-0 flex-1 rounded-lg bg-[#101024]/[0.03] px-3 py-2">
                         <p className="text-[12px]">
-                          <span className="font-bold text-stone-800">{c.author_name ?? 'Unknown'}</span>
-                          <span className="ml-2 text-stone-400">{relTime(c.created_at)}</span>
+                          <span className="font-bold text-slate-200">{c.author_name ?? 'Unknown'}</span>
+                          <span className="ml-2 text-slate-600">{relTime(c.created_at)}</span>
                         </p>
-                        <p className="mt-0.5 whitespace-pre-wrap text-[13px] leading-relaxed text-stone-700">{c.body}</p>
+                        <p className="mt-0.5 whitespace-pre-wrap text-[13px] leading-relaxed text-slate-300">{c.body}</p>
                       </div>
                     </div>
                   ))}
-                  {detail!.comments.length === 0 && <p className="text-[13px] text-stone-400">No comments yet.</p>}
+                  {detail!.comments.length === 0 && <p className="text-[13px] text-slate-600">No comments yet.</p>}
                   <div className="flex gap-2.5">
                     <input
                       value={commentText}
                       onChange={(e) => setCommentText(e.target.value)}
                       onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addComment() } }}
                       placeholder="Write a comment…"
-                      className="min-w-0 flex-1 rounded-lg border border-stone-200 px-3 py-2 text-[13px] outline-none transition focus:border-[#F2742D]"
+                      className="min-w-0 flex-1 rounded-lg border border-white/10 px-3 py-2 text-[13px] outline-none transition focus:border-[#7C5CFC]"
                     />
                     <button type="button" onClick={addComment} className="btn-orange h-9 px-4 text-[13px]">Send</button>
                   </div>
                 </div>
 
-                <h4 className="mt-6 text-[13px] font-bold text-stone-800">Activity</h4>
+                <h4 className="mt-6 text-[13px] font-bold text-slate-200">Activity</h4>
                 <div className="mt-2 space-y-1.5">
                   {detail!.activity.map((a: Activity) => (
-                    <p key={a.id} className="text-[12px] text-stone-500">
-                      <span className="font-semibold text-stone-700">{a.actor_name ?? 'Someone'}</span> {describeActivity(a)}
-                      <span className="ml-1.5 text-stone-400">{relTime(a.created_at)}</span>
+                    <p key={a.id} className="text-[12px] text-slate-500">
+                      <span className="font-semibold text-slate-300">{a.actor_name ?? 'Someone'}</span> {describeActivity(a)}
+                      <span className="ml-1.5 text-slate-600">{relTime(a.created_at)}</span>
                     </p>
                   ))}
                 </div>
 
                 {detail!.timeEntries.length > 0 && (
                   <>
-                    <h4 className="mt-6 text-[13px] font-bold text-stone-800">Time logged</h4>
+                    <h4 className="mt-6 text-[13px] font-bold text-slate-200">Time logged</h4>
                     <div className="mt-2 space-y-1">
                       {detail!.timeEntries.map((t: TimeEntry) => (
-                        <p key={t.id} className="text-[12px] text-stone-500">
-                          <span className="font-semibold text-stone-700">{t.user_name ?? 'Someone'}</span> logged {fmtMinutes(t.minutes)} · {t.logged_date} <span className="text-stone-400">({t.source})</span>
+                        <p key={t.id} className="text-[12px] text-slate-500">
+                          <span className="font-semibold text-slate-300">{t.user_name ?? 'Someone'}</span> logged {fmtMinutes(t.minutes)} · {t.logged_date} <span className="text-slate-600">({t.source})</span>
                         </p>
                       ))}
                     </div>
@@ -251,7 +251,7 @@ export default function TaskModal() {
                     value={issue.status_id}
                     onChange={(e) => patch({ statusId: e.target.value })}
                     data-testid="status-select"
-                    className="w-full rounded-lg border border-stone-200 px-2.5 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                    className="w-full rounded-lg border border-white/10 px-2.5 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                   >
                     {statuses.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
                   </select>
@@ -260,7 +260,7 @@ export default function TaskModal() {
                   <select
                     value={issue.assignee_id ?? ''}
                     onChange={(e) => patch({ assigneeId: e.target.value || null })}
-                    className="w-full rounded-lg border border-stone-200 px-2.5 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                    className="w-full rounded-lg border border-white/10 px-2.5 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                   >
                     <option value="">Unassigned</option>
                     {members.map((m) => <option key={m.id} value={m.id}>{m.name}</option>)}
@@ -270,7 +270,7 @@ export default function TaskModal() {
                   <select
                     value={issue.project_id ?? ''}
                     onChange={(e) => patch({ projectId: e.target.value || null })}
-                    className="w-full rounded-lg border border-stone-200 px-2.5 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                    className="w-full rounded-lg border border-white/10 px-2.5 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                   >
                     <option value="">No project</option>
                     {projects.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
@@ -283,7 +283,7 @@ export default function TaskModal() {
                     step={15}
                     defaultValue={issue.estimate_minutes}
                     onBlur={(e) => { const v = Number(e.target.value); if (v !== issue.estimate_minutes) patch({ estimateMinutes: v }) }}
-                    className="w-full rounded-lg border border-stone-200 px-2.5 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                    className="w-full rounded-lg border border-white/10 px-2.5 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                   />
                 </Field>
                 <Field label="Scheduled">
@@ -292,7 +292,7 @@ export default function TaskModal() {
                     value={issue.scheduled_date ?? ''}
                     onChange={(e) => schedule(e.target.value)}
                     data-testid="schedule-input"
-                    className="w-full rounded-lg border border-stone-200 px-2.5 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                    className="w-full rounded-lg border border-white/10 px-2.5 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                   />
                 </Field>
                 {issue.scheduled_date && (
@@ -302,7 +302,7 @@ export default function TaskModal() {
                         type="time"
                         value={issue.start_time ?? ''}
                         onChange={(e) => api(`/issues/${issue.id}/schedule`, { method: 'POST', body: { scheduledDate: issue.scheduled_date, startTime: e.target.value || undefined, durationMinutes: issue.duration_minutes ?? issue.estimate_minutes ?? 60 } }).then(() => load(issue.id))}
-                        className="w-full rounded-lg border border-stone-200 px-2 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                        className="w-full rounded-lg border border-white/10 px-2 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                       />
                     </Field>
                     <Field label="Duration (min)">
@@ -312,7 +312,7 @@ export default function TaskModal() {
                         step={5}
                         value={issue.duration_minutes ?? issue.estimate_minutes ?? 60}
                         onChange={(e) => api(`/issues/${issue.id}/schedule`, { method: 'POST', body: { scheduledDate: issue.scheduled_date, startTime: issue.start_time ?? undefined, durationMinutes: Number(e.target.value) } }).then(() => load(issue.id))}
-                        className="w-full rounded-lg border border-stone-200 px-2 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                        className="w-full rounded-lg border border-white/10 px-2 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                       />
                     </Field>
                   </div>
@@ -322,7 +322,7 @@ export default function TaskModal() {
                     type="date"
                     value={issue.due_date ?? ''}
                     onChange={(e) => patch({ dueDate: e.target.value || null })}
-                    className="w-full rounded-lg border border-stone-200 px-2.5 py-2 text-[13px] outline-none focus:border-[#F2742D]"
+                    className="w-full rounded-lg border border-white/10 px-2.5 py-2 text-[13px] outline-none focus:border-[#7C5CFC]"
                   />
                 </Field>
                 <Field label="Labels">
@@ -336,7 +336,7 @@ export default function TaskModal() {
                           data-testid={`label-${l.name}`}
                           onClick={() => toggleLabel(l.id)}
                           className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-semibold transition ${
-                            has ? 'border-transparent text-white' : 'border-stone-200 bg-white text-stone-500 hover:border-stone-300'
+                            has ? 'border-transparent text-white' : 'border-white/10 bg-[#101024] text-slate-500 hover:border-white/20'
                           }`}
                           style={has ? { background: l.color } : undefined}
                         >
@@ -365,7 +365,7 @@ export default function TaskModal() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <p className="mb-1 text-[11px] font-bold tracking-wide text-stone-400">{label.toUpperCase()}</p>
+      <p className="mb-1 text-[11px] font-bold tracking-wide text-slate-600">{label.toUpperCase()}</p>
       {children}
     </div>
   )

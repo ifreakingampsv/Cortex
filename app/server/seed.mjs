@@ -38,10 +38,10 @@ const ts = now()
 /* ------------------------------- users & team -------------------------------- */
 
 const users = {
-  alex: { id: uid(), email: 'alex@acme.dev', name: 'Alex Rivera', color: '#F2742D' },
-  sarah: { id: uid(), email: 'sarah@acme.dev', name: 'Sarah Chen', color: '#8B5CF6' },
-  tom: { id: uid(), email: 'tom@acme.dev', name: 'Tom Okafor', color: '#0EA5E9' },
-  mia: { id: uid(), email: 'mia@acme.dev', name: 'Mia Petrov', color: '#EC4899' },
+  alex: { id: uid(), email: 'alex@acme.dev', name: 'Alex Rivera', color: '#7C5CFC' },
+  sarah: { id: uid(), email: 'sarah@acme.dev', name: 'Sarah Chen', color: '#38BDF8' },
+  tom: { id: uid(), email: 'tom@acme.dev', name: 'Tom Okafor', color: '#22D3EE' },
+  mia: { id: uid(), email: 'mia@acme.dev', name: 'Mia Petrov', color: '#F471B5' },
   dev: { id: uid(), email: 'dev@acme.dev', name: 'Dev Green', color: '#22C55E' },
 }
 for (const u of Object.values(users)) {
@@ -56,9 +56,9 @@ for (const u of [users.sarah, users.tom, users.mia, users.dev]) insMember.run(te
 /* -------------------------------- projects ----------------------------------- */
 
 const projects = {
-  website: { id: uid(), name: 'Website Redesign', color: '#F2742D', description: 'Marketing site refresh: new brand, faster pages, better conversion.' },
-  mobile: { id: uid(), name: 'Mobile App', color: '#8B5CF6', description: 'React Native app — planner, calendar sync and offline mode.' },
-  growth: { id: uid(), name: 'Growth Experiments', color: '#3B82F6', description: 'Onboarding, lifecycle emails and pricing page experiments.' },
+  website: { id: uid(), name: 'Website Redesign', color: '#EC4899', description: 'Marketing site refresh: new brand, faster pages, better conversion.' },
+  mobile: { id: uid(), name: 'Mobile App', color: '#A78BFA', description: 'React Native app — planner, calendar sync and offline mode.' },
+  growth: { id: uid(), name: 'Growth Experiments', color: '#38BDF8', description: 'Onboarding, lifecycle emails and pricing page experiments.' },
 }
 for (const p of Object.values(projects)) insProject.run(p.id, teamId, p.name, p.color, p.description, ts)
 
@@ -81,7 +81,7 @@ const statuses = {}
 const labels = {}
 ;[
   ...DEFAULT_LABELS,
-  { name: 'planning', color: '#8B5CF6' },
+  { name: 'planning', color: '#38BDF8' },
   { name: 'bug', color: '#EF4444' },
   { name: 'research', color: '#14B8A6' },
 ].forEach((l) => {

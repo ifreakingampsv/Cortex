@@ -74,17 +74,17 @@ export default function Planning() {
       <div className="flex items-center gap-2">
         {['Pick your work', 'Balance the day', 'Confirm'].map((s, i) => (
           <div key={s} className="flex items-center gap-2">
-            <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold ${step > i ? 'bg-[#F2742D] text-white' : 'bg-stone-200 text-stone-500'}`}>{i + 1}</span>
-            <span className={`text-[13px] font-semibold ${step > i ? 'text-stone-800' : 'text-stone-400'}`}>{s}</span>
-            {i < 2 && <span className="mx-1 h-px w-8 bg-stone-200" />}
+            <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold ${step > i ? 'bg-[#7C5CFC] text-white' : 'bg-indigo-500/15 text-slate-500'}`}>{i + 1}</span>
+            <span className={`text-[13px] font-semibold ${step > i ? 'text-slate-200' : 'text-slate-600'}`}>{s}</span>
+            {i < 2 && <span className="mx-1 h-px w-8 bg-indigo-500/15" />}
           </div>
         ))}
       </div>
 
       {step === 1 && (
         <div className="mt-6" data-testid="planning-step-1">
-          <h1 className="text-2xl font-bold tracking-tight text-stone-900">What do you want to get done today?</h1>
-          <p className="mt-1 text-[13.5px] text-stone-500">You already have {fmtMinutesLong(alreadyPlanned)} planned. Pull in work from your backlog and other days.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-100">What do you want to get done today?</h1>
+          <p className="mt-1 text-[13.5px] text-slate-500">You already have {fmtMinutesLong(alreadyPlanned)} planned. Pull in work from your backlog and other days.</p>
           <div className="mt-5 space-y-2">
             {candidates.map((c) => {
               const on = picked.has(c.id)
@@ -95,23 +95,23 @@ export default function Planning() {
                   data-testid={`plan-candidate-${c.id}`}
                   onClick={() => setPicked((p) => { const n = new Set(p); if (n.has(c.id)) n.delete(c.id); else n.add(c.id); return n })}
                   className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left transition ${
-                    on ? 'border-[#F2742D] bg-orange-50/70' : 'border-stone-200 bg-white hover:border-stone-300'
+                    on ? 'border-[#7C5CFC] bg-indigo-500/10' : 'border-white/10 bg-[#101024] hover:border-white/20'
                   }`}
                 >
-                  <span className={`flex h-4.5 w-4.5 h-[18px] w-[18px] items-center justify-center rounded-full border-2 text-[10px] font-bold ${on ? 'border-[#F2742D] bg-[#F2742D] text-white' : 'border-stone-300'}`}>{on ? '✓' : ''}</span>
+                  <span className={`flex h-4.5 w-4.5 h-[18px] w-[18px] items-center justify-center rounded-full border-2 text-[10px] font-bold ${on ? 'border-[#7C5CFC] bg-[#7C5CFC] text-white' : 'border-white/20'}`}>{on ? '✓' : ''}</span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[14px] font-semibold text-stone-800">{c.title}</span>
-                    <span className="block text-[12px] text-stone-400">
+                    <span className="block truncate text-[14px] font-semibold text-slate-200">{c.title}</span>
+                    <span className="block text-[12px] text-slate-600">
                       {c.project_name ?? 'No project'}{c.labels.length ? ` · ${c.labels.map((l) => `#${l.name}`).join(' ')}` : ''}
                     </span>
                   </span>
-                  <span className="rounded bg-stone-100 px-2 py-0.5 text-[12px] font-bold text-stone-500">{fmtMinutes(c.estimate_minutes || 60)}</span>
+                  <span className="rounded bg-[#101024]/10 px-2 py-0.5 text-[12px] font-bold text-slate-500">{fmtMinutes(c.estimate_minutes || 60)}</span>
                 </button>
               )
             })}
-            {candidates.length === 0 && <p className="rounded-xl bg-stone-50 px-4 py-6 text-center text-sm text-stone-400">Nothing available — everything is already scheduled or done. 🎉</p>}
+            {candidates.length === 0 && <p className="rounded-xl bg-[#101024]/[0.03] px-4 py-6 text-center text-sm text-slate-600">Nothing available — everything is already scheduled or done. 🎉</p>}
           </div>
-          <button type="button" disabled={picked.size === 0} onClick={() => setStep(2)} className="btn-orange mt-6 h-11 px-7 disabled:cursor-not-allowed disabled:bg-stone-200 disabled:text-stone-400 disabled:shadow-none">
+          <button type="button" disabled={picked.size === 0} onClick={() => setStep(2)} className="btn-orange mt-6 h-11 px-7 disabled:cursor-not-allowed disabled:bg-indigo-500/15 disabled:text-slate-600 disabled:shadow-none">
             Next: balance the day →
           </button>
         </div>
@@ -119,18 +119,18 @@ export default function Planning() {
 
       {step === 2 && (
         <div className="mt-6" data-testid="planning-step-2">
-          <h1 className="text-2xl font-bold tracking-tight text-stone-900">Balance your day</h1>
-          <p className="mt-1 text-[13.5px] text-stone-500">Set a realistic cap for today. Cortex timeboxes each task in sequence.</p>
-          <div className="mt-5 rounded-2xl border border-stone-200 bg-white p-5">
-            <div className="flex items-center justify-between text-[13px] font-semibold text-stone-600">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-100">Balance your day</h1>
+          <p className="mt-1 text-[13.5px] text-slate-500">Set a realistic cap for today. Cortex timeboxes each task in sequence.</p>
+          <div className="mt-5 rounded-2xl border border-white/10 bg-[#101024] p-5">
+            <div className="flex items-center justify-between text-[13px] font-semibold text-slate-400">
               <span>Daily workload</span>
               <span className={over ? 'text-red-500' : 'text-[#22A55C]'}>{fmtMinutesLong(totalMin)} / {fmtMinutesLong(capacity)}</span>
             </div>
-            <div className="mt-2 h-3 overflow-hidden rounded-full bg-stone-100">
+            <div className="mt-2 h-3 overflow-hidden rounded-full bg-[#101024]/10">
               <div className="h-full rounded-full transition-all" style={{ width: `${Math.min(100, (totalMin / capacity) * 100)}%`, background: over ? '#EF4444' : '#F0A742' }} />
             </div>
-            <input type="range" min={60} max={600} step={30} value={capacity} onChange={(e) => setCapacity(Number(e.target.value))} className="mt-4 w-full accent-[#F2742D]" />
-            <p className="text-center text-[12px] text-stone-400">Capacity: {fmtMinutesLong(capacity)}</p>
+            <input type="range" min={60} max={600} step={30} value={capacity} onChange={(e) => setCapacity(Number(e.target.value))} className="mt-4 w-full accent-[#7C5CFC]" />
+            <p className="text-center text-[12px] text-slate-600">Capacity: {fmtMinutesLong(capacity)}</p>
             {over && (
               <p className="mt-2 rounded-lg bg-red-50 px-3 py-2 text-[13px] font-medium text-red-600">
                 That's over capacity — your past self says hi. Untick something or raise the cap.
@@ -138,21 +138,21 @@ export default function Planning() {
             )}
             <div className="mt-4 space-y-1.5">
               {existing.filter((i) => !i.completed_at).map((i) => (
-                <div key={i.id} className="flex items-center justify-between rounded-lg bg-stone-50 px-3 py-2 text-[13px] text-stone-500">
+                <div key={i.id} className="flex items-center justify-between rounded-lg bg-[#101024]/[0.03] px-3 py-2 text-[13px] text-slate-500">
                   <span className="truncate">Already planned: {i.title}</span>
                   <span className="ml-2 shrink-0 font-semibold">{i.start_time ?? ''} · {fmtMinutes(i.duration_minutes || i.estimate_minutes)}</span>
                 </div>
               ))}
               {preview.map((p) => (
-                <div key={p.issue.id} className="flex items-center justify-between rounded-lg border border-orange-100 bg-orange-50/50 px-3 py-2 text-[13px]">
-                  <span className="truncate font-semibold text-stone-700">{p.issue.title}</span>
-                  <span className="ml-2 shrink-0 font-bold text-[#EA6A2C]">{minToTime(p.start)} · {fmtMinutes(p.dur)}</span>
+                <div key={p.issue.id} className="flex items-center justify-between rounded-lg border border-indigo-500/20 bg-indigo-500/10/50 px-3 py-2 text-[13px]">
+                  <span className="truncate font-semibold text-slate-300">{p.issue.title}</span>
+                  <span className="ml-2 shrink-0 font-bold text-[#A5B4FC]">{minToTime(p.start)} · {fmtMinutes(p.dur)}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="mt-6 flex gap-3">
-            <button type="button" onClick={() => setStep(1)} className="h-11 rounded-full border border-stone-300 px-6 text-[14px] font-semibold text-stone-600 hover:bg-stone-50">← Back</button>
+            <button type="button" onClick={() => setStep(1)} className="h-11 rounded-full border border-white/20 px-6 text-[14px] font-semibold text-slate-400 hover:bg-[#101024]/[0.03]">← Back</button>
             <button type="button" onClick={() => setStep(3)} className="btn-orange h-11 px-7">Next: confirm →</button>
           </div>
         </div>
@@ -160,21 +160,21 @@ export default function Planning() {
 
       {step === 3 && (
         <div className="mt-6" data-testid="planning-step-3">
-          <h1 className="text-2xl font-bold tracking-tight text-stone-900">Ready for a clear day</h1>
-          <p className="mt-1 text-[13.5px] text-stone-500">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-100">Ready for a clear day</h1>
+          <p className="mt-1 text-[13.5px] text-slate-500">
             {preview.length} task{preview.length === 1 ? '' : 's'} will be timeboxed onto today's calendar ({fmtMinutesLong(totalMin)} total).
           </p>
           <div className="mt-5 space-y-2">
             {preview.map((p) => (
-              <div key={p.issue.id} className="flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-4 py-3">
-                <span className="rounded-md bg-[#F2742D] px-2 py-1 text-[11px] font-bold text-white">{minToTime(p.start)}</span>
-                <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-stone-800">{p.issue.title}</span>
-                <span className="text-[12px] font-bold text-stone-500">{fmtMinutes(p.dur)}</span>
+              <div key={p.issue.id} className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#101024] px-4 py-3">
+                <span className="rounded-md bg-[#7C5CFC] px-2 py-1 text-[11px] font-bold text-white">{minToTime(p.start)}</span>
+                <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-slate-200">{p.issue.title}</span>
+                <span className="text-[12px] font-bold text-slate-500">{fmtMinutes(p.dur)}</span>
               </div>
             ))}
           </div>
           <div className="mt-6 flex gap-3">
-            <button type="button" onClick={() => setStep(2)} className="h-11 rounded-full border border-stone-300 px-6 text-[14px] font-semibold text-stone-600 hover:bg-stone-50">← Back</button>
+            <button type="button" onClick={() => setStep(2)} className="h-11 rounded-full border border-white/20 px-6 text-[14px] font-semibold text-slate-400 hover:bg-[#101024]/[0.03]">← Back</button>
             <button type="button" disabled={busy} onClick={confirm} data-testid="confirm-plan" className="btn-orange h-11 px-7 disabled:opacity-60">
               {busy ? 'Scheduling…' : 'Plan my day ✓'}
             </button>

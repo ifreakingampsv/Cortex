@@ -13,7 +13,7 @@ function Item({ to, label, icon, exact = false }: { to: string; label: string; i
       end={exact}
       className={({ isActive }) =>
         `flex items-center gap-2.5 rounded-lg px-2.5 py-[7px] text-[13.5px] font-medium transition ${
-          isActive ? 'bg-stone-200/80 text-stone-900' : 'text-stone-600 hover:bg-stone-100'
+          isActive ? 'bg-indigo-500/15 text-slate-100' : 'text-slate-400 hover:bg-[#101024]/10'
         }`
       }
     >
@@ -24,7 +24,7 @@ function Item({ to, label, icon, exact = false }: { to: string; label: string; i
 }
 
 function GroupLabel({ children }: { children: React.ReactNode }) {
-  return <p className="mt-4 mb-1 px-2.5 text-[10px] font-bold tracking-[0.12em] text-stone-400">{children}</p>
+  return <p className="mt-4 mb-1 px-2.5 text-[10px] font-bold tracking-[0.12em] text-slate-600">{children}</p>
 }
 
 export default function Sidebar() {
@@ -58,32 +58,32 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="flex h-screen w-[232px] shrink-0 flex-col border-r border-stone-200/70 bg-[#FBFAF8]">
+    <aside className="flex h-screen w-[232px] shrink-0 flex-col border-r border-white/10 bg-[#0E0E20]">
       {/* Workspace switcher */}
       <div ref={switcherRef} className="relative px-3 pt-3.5">
         <button
           type="button"
           onClick={() => setSwitcherOpen((o) => !o)}
-          className="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition hover:bg-stone-100"
+          className="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition hover:bg-[#101024]/10"
         >
           <CortexMark size={22} />
-          <span className="min-w-0 flex-1 truncate text-[14px] font-bold text-stone-800">{team?.name ?? '…'}</span>
-          <span className="text-[9px] text-stone-400">▼</span>
+          <span className="min-w-0 flex-1 truncate text-[14px] font-bold text-slate-200">{team?.name ?? '…'}</span>
+          <span className="text-[9px] text-slate-600">▼</span>
         </button>
         {switcherOpen && (
-          <div className="absolute left-3 right-3 top-12 z-30 rounded-xl border border-stone-200 bg-white p-1.5 shadow-xl">
+          <div className="absolute left-3 right-3 top-12 z-30 rounded-xl border border-white/10 bg-[#101024] p-1.5 shadow-xl">
             {teams.map((t) => (
               <button
                 key={t.id}
                 type="button"
                 onClick={() => { setTeamId(t.id); setSwitcherOpen(false) }}
-                className={`flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-left text-[13.5px] transition hover:bg-stone-100 ${t.id === team?.id ? 'font-bold text-stone-900' : 'text-stone-600'}`}
+                className={`flex w-full items-center justify-between rounded-lg px-2.5 py-2 text-left text-[13.5px] transition hover:bg-[#101024]/10 ${t.id === team?.id ? 'font-bold text-slate-100' : 'text-slate-400'}`}
               >
                 {t.name}
-                {t.id === team?.id && <span className="text-[#F2742D]">✓</span>}
+                {t.id === team?.id && <span className="text-[#7C5CFC]">✓</span>}
               </button>
             ))}
-            <div className="my-1 h-px bg-stone-100" />
+            <div className="my-1 h-px bg-[#101024]/10" />
             {creating ? (
               <div className="p-1.5">
                 <input
@@ -92,15 +92,15 @@ export default function Sidebar() {
                   onChange={(e) => setNewName(e.target.value)}
                   onKeyDown={(e) => { if (e.key === 'Enter') createTeam(); if (e.key === 'Escape') setCreating(false) }}
                   placeholder="Workspace name"
-                  className="w-full rounded-md border border-stone-300 px-2 py-1.5 text-[13px] outline-none focus:border-[#F2742D]"
+                  className="w-full rounded-md border border-white/20 px-2 py-1.5 text-[13px] outline-none focus:border-[#7C5CFC]"
                 />
                 <div className="mt-1.5 flex gap-1.5">
-                  <button type="button" onClick={createTeam} className="flex-1 rounded-md bg-[#F2742D] py-1 text-[12px] font-bold text-white hover:bg-[#E05E1B]">Create</button>
-                  <button type="button" onClick={() => setCreating(false)} className="flex-1 rounded-md border border-stone-200 py-1 text-[12px] font-semibold text-stone-500">Cancel</button>
+                  <button type="button" onClick={createTeam} className="flex-1 rounded-md bg-[#7C5CFC] py-1 text-[12px] font-bold text-white hover:bg-[#6D4AE0]">Create</button>
+                  <button type="button" onClick={() => setCreating(false)} className="flex-1 rounded-md border border-white/10 py-1 text-[12px] font-semibold text-slate-500">Cancel</button>
                 </div>
               </div>
             ) : (
-              <button type="button" onClick={() => setCreating(true)} className="w-full rounded-lg px-2.5 py-2 text-left text-[13.5px] font-semibold text-[#EA6A2C] transition hover:bg-orange-50">
+              <button type="button" onClick={() => setCreating(true)} className="w-full rounded-lg px-2.5 py-2 text-left text-[13.5px] font-semibold text-[#A5B4FC] transition hover:bg-indigo-500/10">
                 + New workspace
               </button>
             )}
@@ -136,7 +136,7 @@ export default function Sidebar() {
               to={`/app/board?project=${p.id}`}
               className={({ isActive }) =>
                 `flex items-center gap-2.5 rounded-lg px-2.5 py-[6px] text-[13px] transition ${
-                  isActive ? 'bg-stone-200/80 text-stone-900 font-medium' : 'text-stone-500 hover:bg-stone-100'
+                  isActive ? 'bg-indigo-500/15 text-slate-100 font-medium' : 'text-slate-500 hover:bg-[#101024]/10'
                 }`
               }
             >
@@ -148,24 +148,24 @@ export default function Sidebar() {
       </nav>
 
       {/* Bottom */}
-      <div className="border-t border-stone-200/70 px-3 py-3">
+      <div className="border-t border-white/10 px-3 py-3">
         <NavLink to="/app/settings" className={({ isActive }) =>
-          `mb-2 flex items-center gap-2.5 rounded-lg px-2.5 py-[7px] text-[13.5px] font-medium transition ${isActive ? 'bg-stone-200/80 text-stone-900' : 'text-stone-600 hover:bg-stone-100'}`}>
+          `mb-2 flex items-center gap-2.5 rounded-lg px-2.5 py-[7px] text-[13.5px] font-medium transition ${isActive ? 'bg-indigo-500/15 text-slate-100' : 'text-slate-400 hover:bg-[#101024]/10'}`}>
           <span className="w-4 text-center">⚙</span> Settings
         </NavLink>
         <div className="flex items-center gap-2.5 rounded-lg px-2 py-1.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full text-[12px] font-bold text-white" style={{ background: user?.avatarColor ?? '#F2742D' }}>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full text-[12px] font-bold text-white" style={{ background: user?.avatarColor ?? '#7C5CFC' }}>
             {user ? initials(user.name) : '·'}
           </span>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-[13px] font-semibold text-stone-800">{user?.name}</p>
-            <p className="truncate text-[11px] text-stone-400">{role === 'admin' ? 'Admin' : 'Member'}</p>
+            <p className="truncate text-[13px] font-semibold text-slate-200">{user?.name}</p>
+            <p className="truncate text-[11px] text-slate-600">{role === 'admin' ? 'Admin' : 'Member'}</p>
           </div>
           <button
             type="button"
             title="Log out"
             onClick={() => { logout(); navigate('/') }}
-            className="rounded-md px-1.5 py-1 text-stone-400 transition hover:bg-stone-100 hover:text-stone-700"
+            className="rounded-md px-1.5 py-1 text-slate-600 transition hover:bg-[#101024]/10 hover:text-slate-300"
           >
             ⎋
           </button>

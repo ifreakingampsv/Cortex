@@ -4,64 +4,34 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: hsl(30 33% 98%);
-  --foreground: hsl(24 10% 10%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(24 10% 10%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(24 10% 10%);
-  --primary: hsl(21 88% 53%);
+  --background: hsl(243 46% 4%);
+  --foreground: hsl(240 40% 92%);
+  --card: hsl(243 34% 8%);
+  --card-foreground: hsl(240 40% 92%);
+  --popover: hsl(243 34% 7%);
+  --popover-foreground: hsl(240 40% 92%);
+  --primary: hsl(256 82% 66%);
   --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(30 20% 95%);
-  --secondary-foreground: hsl(24 10% 10%);
-  --muted: hsl(30 20% 95%);
-  --muted-foreground: hsl(25 5% 45%);
-  --accent: hsl(30 20% 95%);
-  --accent-foreground: hsl(24 10% 10%);
-  --destructive: hsl(0 84.2% 60.2%);
+  --secondary: hsl(243 30% 14%);
+  --secondary-foreground: hsl(240 40% 92%);
+  --muted: hsl(243 30% 13%);
+  --muted-foreground: hsl(240 18% 62%);
+  --accent: hsl(243 30% 14%);
+  --accent-foreground: hsl(240 40% 92%);
+  --destructive: hsl(0 72% 58%);
   --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(30 12% 90%);
-  --input: hsl(30 12% 88%);
-  --ring: hsl(21 88% 53%);
+  --border: hsl(243 40% 16%);
+  --input: hsl(243 40% 18%);
+  --ring: hsl(256 82% 66%);
   --radius: 0.625rem;
-  --sidebar-background: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
-}
-
-.dark {
-  --background: hsl(240 10% 3.9%);
-  --foreground: hsl(0 0% 98%);
-  --card: hsl(240 10% 3.9%);
-  --card-foreground: hsl(0 0% 98%);
-  --popover: hsl(240 10% 3.9%);
-  --popover-foreground: hsl(0 0% 98%);
-  --primary: hsl(21 88% 53%);
-  --primary-foreground: hsl(0 0% 98%);
-  --secondary: hsl(240 3.7% 15.9%);
-  --secondary-foreground: hsl(0 0% 98%);
-  --muted: hsl(240 3.7% 15.9%);
-  --muted-foreground: hsl(240 5% 64.9%);
-  --accent: hsl(240 3.7% 15.9%);
-  --accent-foreground: hsl(0 0% 98%);
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(240 3.7% 15.9%);
-  --input: hsl(240 3.7% 15.9%);
-  --ring: hsl(240 4.9% 83.9%);
-  --sidebar-background: hsl(240 5.9% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-background: hsl(243 40% 6%);
+  --sidebar-foreground: hsl(240 30% 80%);
+  --sidebar-primary: hsl(256 82% 66%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --sidebar-accent: hsl(243 30% 14%);
+  --sidebar-accent-foreground: hsl(240 40% 92%);
+  --sidebar-border: hsl(243 40% 16%);
+  --sidebar-ring: hsl(256 82% 66%);
 }
 
 @theme inline {
@@ -134,15 +104,23 @@
   }
 }
 
-/* ---------- Cortex brand helpers ---------- */
+/* ---------- Cortex neural theme helpers ---------- */
 
 .font-display {
-  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Space Grotesk", "DM Sans", ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.035em;
 }
 
+.text-gradient-neural {
+  background: linear-gradient(92deg, #38BDF8 0%, #8B5CF6 48%, #EC4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* keep legacy class name working (was the orange gradient) */
 .text-gradient-warm {
-  background: linear-gradient(92deg, #F2503F 5%, #F2742D 55%, #F59E0B 100%);
+  background: linear-gradient(92deg, #38BDF8 0%, #8B5CF6 48%, #EC4899 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -150,43 +128,54 @@
 
 .hero-bg {
   background:
-    radial-gradient(900px 480px at 62% -8%, rgba(248, 202, 168, 0.55), transparent 60%),
-    radial-gradient(760px 420px at 108% 42%, rgba(247, 187, 148, 0.5), transparent 62%),
-    linear-gradient(180deg, #FDF4EC 0%, #FCEDDF 45%, #FEFBF8 100%);
+    radial-gradient(1000px 520px at 18% -10%, rgba(56, 189, 248, 0.16), transparent 60%),
+    radial-gradient(900px 520px at 88% 8%, rgba(139, 92, 246, 0.20), transparent 62%),
+    radial-gradient(760px 460px at 70% 90%, rgba(236, 72, 153, 0.10), transparent 60%),
+    linear-gradient(180deg, #0A0A18 0%, #07070F 100%);
 }
 
 .section-peach-bg {
   background:
-    radial-gradient(1100px 520px at 85% 20%, rgba(247, 187, 148, 0.42), transparent 60%),
-    radial-gradient(900px 480px at 10% 90%, rgba(248, 202, 168, 0.35), transparent 60%),
-    #FFFDFA;
+    radial-gradient(1100px 540px at 88% 12%, rgba(139, 92, 246, 0.14), transparent 62%),
+    radial-gradient(900px 500px at 6% 88%, rgba(56, 189, 248, 0.10), transparent 60%),
+    #07070F;
 }
 
 .cta-gradient-bg {
   background:
-    radial-gradient(800px 400px at 30% 0%, rgba(255, 214, 178, 0.75), transparent 65%),
-    radial-gradient(700px 380px at 80% 100%, rgba(248, 187, 148, 0.6), transparent 60%),
-    linear-gradient(180deg, #FCE9D8 0%, #F9D8C0 100%);
+    radial-gradient(820px 420px at 26% 0%, rgba(56, 189, 248, 0.16), transparent 62%),
+    radial-gradient(760px 420px at 82% 100%, rgba(236, 72, 153, 0.14), transparent 60%),
+    linear-gradient(180deg, #0B0B1C 0%, #101028 100%);
 }
 
+/* primary button (legacy class name kept; neural gradient) */
 .btn-orange {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-[#F2742D] font-semibold text-white transition-all duration-200;
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0.05));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 8px rgba(242, 116, 45, 0.35);
+  @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white transition-all duration-200;
+  background-image: linear-gradient(135deg, #4338CA 0%, #7C3AED 52%, #C026D3 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 18px rgba(124, 58, 237, 0.45);
 }
 .btn-orange:hover {
-  background-color: #E05E1B;
+  filter: brightness(1.12);
   transform: translateY(-1px);
 }
 .btn-orange:active { transform: translateY(0); }
-
-.btn-outline-orange {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-[#F2742D] font-semibold text-[#EA6A2C] bg-white/60 transition-colors;
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white transition-all duration-200;
+  background-image: linear-gradient(135deg, #4338CA 0%, #7C3AED 52%, #C026D3 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 18px rgba(124, 58, 237, 0.45);
 }
-.btn-outline-orange:hover { background: #FEF0E5; }
+
+/* outline button (legacy class name kept; violet outline) */
+.btn-outline-orange {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-violet-400/60 font-semibold text-violet-300 bg-transparent transition-colors;
+}
+.btn-outline-orange:hover { background: rgba(139, 92, 246, 0.12); border-color: rgba(167, 139, 250, 0.9); }
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-violet-400/60 font-semibold text-violet-300 bg-transparent transition-colors;
+}
 
 .pill-badge {
-  @apply inline-flex items-center gap-2 rounded-full border border-[#F0B794] bg-white/70 px-4 py-1.5 text-sm font-semibold text-[#EA6A2C];
+  @apply inline-flex items-center gap-2 rounded-full border border-violet-400/40 bg-violet-500/10 px-4 py-1.5 text-sm font-semibold text-violet-300;
 }
 
 .reveal {
@@ -205,5 +194,7 @@
 
 /* thin scrollbars inside app panels */
 .app-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
-.app-scroll::-webkit-scrollbar-thumb { background: #E2DEDA; border-radius: 8px; }
+.app-scroll::-webkit-scrollbar-thumb { background: #26264A; border-radius: 8px; }
 .app-scroll::-webkit-scrollbar-track { background: transparent; }
+
+::selection { background: rgba(139, 92, 246, 0.4); }

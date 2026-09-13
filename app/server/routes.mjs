@@ -77,7 +77,7 @@ api.post('/auth/register', (req, res) => {
   }
   const id = uid()
   db.prepare('INSERT INTO users (id, email, password_hash, name, avatar_color, created_at) VALUES (?,?,?,?,?,?)')
-    .run(id, normalized, hashPassword(password), name.trim(), '#F2742D', now())
+    .run(id, normalized, hashPassword(password), name.trim(), '#7C5CFC', now())
   const user = db.prepare('SELECT * FROM users WHERE id = ?').get(id)
   createTeam({
     name: `${user.name.split(' ')[0]}'s Workspace`,
@@ -216,7 +216,7 @@ api.get('/teams/:id/projects', requireAuth, teamContext, (req, res) => {
 })
 
 api.post('/teams/:id/projects', requireAuth, teamContext, (req, res) => {
-  const { name, color = '#F2742D', description = '' } = req.body || {}
+  const { name, color = '#7C5CFC', description = '' } = req.body || {}
   if (!name || !name.trim()) return bad(res, 'Project name is required')
   const id = uid()
   db.prepare('INSERT INTO projects (id, team_id, name, color, description, created_at) VALUES (?,?,?,?,?,?)')
@@ -299,7 +299,7 @@ api.get('/teams/:id/labels', requireAuth, teamContext, (req, res) => {
 })
 
 api.post('/teams/:id/labels', requireAuth, teamContext, (req, res) => {
-  const { name, color = '#F2742D' } = req.body || {}
+  const { name, color = '#7C5CFC' } = req.body || {}
   if (!name || !name.trim()) return bad(res, 'Label name is required')
   const dup = db.prepare('SELECT id FROM labels WHERE team_id = ? AND lower(name) = lower(?)').get(req.teamId, name.trim())
   if (dup) return bad(res, 'A label with this name already exists', 409)

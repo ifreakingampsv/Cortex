@@ -64,7 +64,7 @@ export default function Weekly() {
             key={t}
             type="button"
             onClick={() => setParams({ tab: t })}
-            className={`rounded-full px-4 py-1.5 text-[13.5px] font-bold transition ${tab === t ? 'bg-stone-900 text-white' : 'bg-stone-200/60 text-stone-500 hover:bg-stone-200'}`}
+            className={`rounded-full px-4 py-1.5 text-[13.5px] font-bold transition ${tab === t ? 'bg-[#0A0A1C] text-white' : 'bg-indigo-500/15 text-slate-500 hover:bg-indigo-500/15'}`}
           >
             {t === 'plan' ? 'Weekly planning' : 'Weekly review'}
           </button>
@@ -73,8 +73,8 @@ export default function Weekly() {
 
       {tab === 'plan' && (
         <div className="mt-6" data-testid="weekly-plan">
-          <h1 className="text-2xl font-bold tracking-tight text-stone-900">What are this week's objectives?</h1>
-          <p className="mt-1 text-[13.5px] text-stone-500">Pick up to 3 issues as your weekly focus — they get a Friday due date.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-100">What are this week's objectives?</h1>
+          <p className="mt-1 text-[13.5px] text-slate-500">Pick up to 3 issues as your weekly focus — they get a Friday due date.</p>
           <div className="mt-5 space-y-2">
             {openIssues.map((i) => {
               const on = focusIds.has(i.id)
@@ -83,16 +83,16 @@ export default function Weekly() {
                   key={i.id}
                   type="button"
                   onClick={() => toggleFocus(i.id)}
-                  className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left transition ${on ? 'border-[#F2742D] bg-orange-50/70' : 'border-stone-200 bg-white hover:border-stone-300'}`}
+                  className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left transition ${on ? 'border-[#7C5CFC] bg-indigo-500/10' : 'border-white/10 bg-[#101024] hover:border-white/20'}`}
                 >
-                  <span className={`flex h-[18px] w-[18px] items-center justify-center rounded-full border-2 text-[10px] font-bold ${on ? 'border-[#F2742D] bg-[#F2742D] text-white' : 'border-stone-300'}`}>{on ? '✓' : ''}</span>
-                  <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-stone-800">{i.title}</span>
-                  {on && <span className="rounded bg-[#F2742D]/10 px-2 py-0.5 text-[11px] font-bold text-[#EA6A2C]">this week</span>}
+                  <span className={`flex h-[18px] w-[18px] items-center justify-center rounded-full border-2 text-[10px] font-bold ${on ? 'border-[#7C5CFC] bg-[#7C5CFC] text-white' : 'border-white/20'}`}>{on ? '✓' : ''}</span>
+                  <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-slate-200">{i.title}</span>
+                  {on && <span className="rounded bg-[#7C5CFC]/10 px-2 py-0.5 text-[11px] font-bold text-[#A5B4FC]">this week</span>}
                 </button>
               )
             })}
           </div>
-          <button type="button" disabled={busy || focusIds.size === 0} onClick={saveObjectives} className="btn-orange mt-6 h-11 px-7 disabled:cursor-not-allowed disabled:bg-stone-200 disabled:text-stone-400 disabled:shadow-none">
+          <button type="button" disabled={busy || focusIds.size === 0} onClick={saveObjectives} className="btn-orange mt-6 h-11 px-7 disabled:cursor-not-allowed disabled:bg-indigo-500/15 disabled:text-slate-600 disabled:shadow-none">
             {busy ? 'Saving…' : saved ? 'Objectives saved ✓' : 'Save weekly objectives'}
           </button>
         </div>
@@ -100,32 +100,32 @@ export default function Weekly() {
 
       {tab === 'review' && analytics && (
         <div className="mt-6" data-testid="weekly-review">
-          <h1 className="text-2xl font-bold tracking-tight text-stone-900">Week in review</h1>
-          <p className="mt-1 text-[13.5px] text-stone-500">Week of {weekStart} · {fmtMinutesLong(totalLogged)} logged · {fmtMinutesLong(weekPlanned)} still planned</p>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-100">Week in review</h1>
+          <p className="mt-1 text-[13.5px] text-slate-500">Week of {weekStart} · {fmtMinutesLong(totalLogged)} logged · {fmtMinutesLong(weekPlanned)} still planned</p>
 
-          <div className="mt-5 rounded-2xl border border-stone-200 bg-white p-5">
-            <h2 className="text-[13px] font-bold text-stone-800">Completed this week ({analytics.completed.length})</h2>
+          <div className="mt-5 rounded-2xl border border-white/10 bg-[#101024] p-5">
+            <h2 className="text-[13px] font-bold text-slate-200">Completed this week ({analytics.completed.length})</h2>
             <div className="mt-3 space-y-1.5">
               {analytics.completed.map((c) => (
-                <p key={c.id} className="flex items-center gap-2 text-[13.5px] text-stone-600">
+                <p key={c.id} className="flex items-center gap-2 text-[13.5px] text-slate-400">
                   <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#5FC48F] text-[9px] text-white">✓</span>
-                  <span className="font-medium text-stone-800">{c.title}</span>
-                  {c.project_name && <span className="rounded px-1.5 py-px text-[10.5px] font-bold" style={{ background: `${c.project_color}1A`, color: c.project_color ?? '#78716C' }}>{c.project_name}</span>}
+                  <span className="font-medium text-slate-200">{c.title}</span>
+                  {c.project_name && <span className="rounded px-1.5 py-px text-[10.5px] font-bold" style={{ background: `${c.project_color}1A`, color: c.project_color ?? '#8A8AB0' }}>{c.project_name}</span>}
                 </p>
               ))}
-              {analytics.completed.length === 0 && <p className="text-[13px] text-stone-400">Nothing completed yet this week.</p>}
+              {analytics.completed.length === 0 && <p className="text-[13px] text-slate-600">Nothing completed yet this week.</p>}
             </div>
           </div>
 
-          <div className="mt-5 rounded-2xl border border-stone-200 bg-white p-5">
-            <h2 className="text-[13px] font-bold text-stone-800">Highlights</h2>
+          <div className="mt-5 rounded-2xl border border-white/10 bg-[#101024] p-5">
+            <h2 className="text-[13px] font-bold text-slate-200">Highlights</h2>
             <div className="mt-3 space-y-2">
               {analytics.highlights.map((h) => (
-                <p key={h.id} className="rounded-lg bg-stone-50 px-3.5 py-2.5 text-[13px] leading-relaxed text-stone-700">
-                  <span className="font-bold">{h.user_name}</span> <span className="text-stone-400">· {h.date}</span><br />{h.body}
+                <p key={h.id} className="rounded-lg bg-[#101024]/[0.03] px-3.5 py-2.5 text-[13px] leading-relaxed text-slate-300">
+                  <span className="font-bold">{h.user_name}</span> <span className="text-slate-600">· {h.date}</span><br />{h.body}
                 </p>
               ))}
-              {analytics.highlights.length === 0 && <p className="text-[13px] text-stone-400">No highlights saved this week yet.</p>}
+              {analytics.highlights.length === 0 && <p className="text-[13px] text-slate-600">No highlights saved this week yet.</p>}
             </div>
           </div>
         </div>

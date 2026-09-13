@@ -64,15 +64,15 @@ export default function Today() {
     <div className="flex h-full">
       <div className="flex min-w-0 flex-1 flex-col">
         {/* top bar */}
-        <div className="flex items-center justify-between border-b border-stone-200/70 bg-white/60 px-5 py-2.5">
+        <div className="flex items-center justify-between border-b border-white/10 bg-[#101024]/60 px-5 py-2.5">
           <div className="flex items-center gap-1.5">
-            <Link to="/app" className="rounded-md bg-stone-200/70 px-3 py-1.5 text-[13px] font-bold text-stone-800">☰ Today</Link>
-            <Link to="/app/board" className="rounded-md px-3 py-1.5 text-[13px] font-semibold text-stone-500 transition hover:bg-stone-100">⊞ Board</Link>
+            <Link to="/app" className="rounded-md bg-indigo-500/15 px-3 py-1.5 text-[13px] font-bold text-slate-200">☰ Today</Link>
+            <Link to="/app/board" className="rounded-md px-3 py-1.5 text-[13px] font-semibold text-slate-500 transition hover:bg-[#101024]/10">⊞ Board</Link>
           </div>
           <button
             type="button"
             onClick={() => setShowCalendar((s) => !s)}
-            className="rounded-md border border-stone-200 px-3 py-1.5 text-[13px] font-semibold text-stone-500 transition hover:bg-stone-100"
+            className="rounded-md border border-white/10 px-3 py-1.5 text-[13px] font-semibold text-slate-500 transition hover:bg-[#101024]/10"
           >
             ▤ {showCalendar ? 'Hide' : 'Show'} calendar
           </button>
@@ -82,7 +82,7 @@ export default function Today() {
         <div className="flex min-h-0 flex-1 gap-4 overflow-x-auto p-4 app-scroll">
           {loading && days.length === 0 ? (
             <div className="flex w-full items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-stone-200 border-t-[#F2742D]" />
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/10 border-t-[#7C5CFC]" />
             </div>
           ) : (
             days.map(({ date, issues }) => {
@@ -98,20 +98,20 @@ export default function Today() {
                   onDragLeave={() => setDragOverDate((d) => (d === date ? null : d))}
                   onDrop={(e) => dropToDate(e, date)}
                   className={`flex w-[300px] shrink-0 flex-col rounded-xl border p-3 transition ${
-                    dragOverDate === date ? 'border-[#F2742D] bg-orange-50/60' : 'border-stone-200/70 bg-white/50'
+                    dragOverDate === date ? 'border-[#7C5CFC] bg-indigo-500/10' : 'border-white/10 bg-[#101024]/[0.03]'
                   }`}
                 >
                   <div className="px-1">
-                    <p className="text-[15px] font-bold text-stone-900">{dayLabel(date)}</p>
-                    <p className="text-[12px] text-stone-400">{subLabel(date)}</p>
+                    <p className="text-[15px] font-bold text-slate-100">{dayLabel(date)}</p>
+                    <p className="text-[12px] text-slate-600">{subLabel(date)}</p>
                     <div className="mt-2 flex items-center gap-2">
-                      <div className="h-[5px] flex-1 rounded-full bg-stone-200/70">
+                      <div className="h-[5px] flex-1 rounded-full bg-indigo-500/15">
                         <div
                           className="h-full rounded-full transition-all"
                           style={{ width: `${loadPct}%`, background: loadPct > 90 ? '#EF4444' : loadPct > 60 ? '#F0A742' : '#5FC48F' }}
                         />
                       </div>
-                      <span className="text-[10.5px] font-semibold text-stone-400">{fmtMinutes(plannedMin)} planned</span>
+                      <span className="text-[10.5px] font-semibold text-slate-600">{fmtMinutes(plannedMin)} planned</span>
                     </div>
                     {doneCount > 0 && <p className="mt-1 text-[11px] font-medium text-[#22A55C]">✓ {doneCount} done</p>}
                   </div>
@@ -120,10 +120,10 @@ export default function Today() {
                     type="button"
                     onClick={() => { setComposerDate(date); setComposerText('') }}
                     data-testid={`add-task-${date}`}
-                    className="mt-3 flex w-full items-center justify-between rounded-lg border border-dashed border-stone-300 bg-white/70 px-3 py-2 text-left transition hover:border-[#F2742D] hover:bg-orange-50/40"
+                    className="mt-3 flex w-full items-center justify-between rounded-lg border border-dashed border-white/20 bg-[#101024]/70 px-3 py-2 text-left transition hover:border-[#7C5CFC] hover:bg-indigo-500/10"
                   >
-                    <span className="text-[13px] font-semibold text-stone-400">+ Add task</span>
-                    <span className="text-[11px] font-bold text-stone-300">8:00</span>
+                    <span className="text-[13px] font-semibold text-slate-600">+ Add task</span>
+                    <span className="text-[11px] font-bold text-slate-700">8:00</span>
                   </button>
 
                   {composerDate === date && (
@@ -136,11 +136,11 @@ export default function Today() {
                         onBlur={() => { if (!composerText.trim()) setComposerDate(null) }}
                         placeholder="Task title, press Enter"
                         data-testid="task-title-input"
-                        className="w-full rounded-lg border border-[#F2742D] bg-white px-3 py-2 text-[13px] outline-none ring-2 ring-orange-100"
+                        className="w-full rounded-lg border border-[#7C5CFC] bg-[#101024] px-3 py-2 text-[13px] outline-none ring-2 ring-indigo-500/20"
                       />
                       <div className="mt-1.5 flex gap-1.5">
                         <button type="button" onMouseDown={(e) => { e.preventDefault(); addTask(date) }} className="btn-orange h-7 px-3 text-[12px]">Add</button>
-                        <button type="button" onClick={() => setComposerDate(null)} className="h-7 rounded-full border border-stone-200 px-3 text-[12px] font-semibold text-stone-500">Cancel</button>
+                        <button type="button" onClick={() => setComposerDate(null)} className="h-7 rounded-full border border-white/10 px-3 text-[12px] font-semibold text-slate-500">Cancel</button>
                       </div>
                     </div>
                   )}
@@ -150,7 +150,7 @@ export default function Today() {
                       <TaskCard key={i.id} issue={i} onToggleDone={load} />
                     ))}
                     {issues.length === 0 && (
-                      <p className="px-1 pt-2 text-center text-[12.5px] text-stone-400">
+                      <p className="px-1 pt-2 text-center text-[12.5px] text-slate-600">
                         Nothing planned yet — add a task or drop one here.
                       </p>
                     )}
@@ -162,10 +162,10 @@ export default function Today() {
 
           <Link
             to="/app/planning"
-            className="flex h-fit w-[180px] shrink-0 flex-col items-start gap-1 rounded-xl border border-dashed border-stone-300 p-4 text-left transition hover:border-[#F2742D] hover:bg-orange-50/40"
+            className="flex h-fit w-[180px] shrink-0 flex-col items-start gap-1 rounded-xl border border-dashed border-white/20 p-4 text-left transition hover:border-[#7C5CFC] hover:bg-indigo-500/10"
           >
-            <span className="text-[13px] font-bold text-stone-500">✎ Daily planning</span>
-            <span className="text-[11.5px] leading-snug text-stone-400">Pull work from your backlog into a realistic day</span>
+            <span className="text-[13px] font-bold text-slate-500">✎ Daily planning</span>
+            <span className="text-[11.5px] leading-snug text-slate-600">Pull work from your backlog into a realistic day</span>
           </Link>
         </div>
       </div>

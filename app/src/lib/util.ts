@@ -79,7 +79,7 @@ export function relTime(iso: string): string {
   return format(new Date(iso), 'MMM d')
 }
 
-export const AVATAR_COLORS = ['#F2742D', '#8B5CF6', '#0EA5E9', '#EC4899', '#22C55E', '#F59E0B', '#EF4444', '#14B8A6']
+export const AVATAR_COLORS = ['#7C5CFC', '#38BDF8', '#22D3EE', '#EC4899', '#34D399', '#A78BFA', '#F471B5', '#14B8A6']
 
 export function timeColorClass(color: string): string {
   switch (color) {

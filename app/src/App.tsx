@@ -21,7 +21,7 @@ import Settings from './pages/app/Settings'
 function FullPageSpinner() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#FDF8F3]">
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-stone-300 border-t-[#F2742D]" />
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-[#8B5CF6]" />
     </div>
   )
 }
