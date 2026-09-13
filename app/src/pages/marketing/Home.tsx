@@ -457,7 +457,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="reveal rounded-3xl border border-indigo-500/20 bg-gradient-to-b from-[#FEF3E7] to-[#FDE9DA] p-9 shadow-[0_18px_50px_-30px_rgba(139,92,246,0.5)]">
+          <div className="reveal rounded-3xl border border-indigo-500/20 bg-gradient-to-b from-[#15143A] to-[#0E0D24] p-9 shadow-[0_18px_50px_-30px_rgba(139,92,246,0.5)]">
             <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#101024] shadow-sm"><NeuralIcon size={40} /></span>
             <h2 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-slate-100">
               Cortex turns<br />chaos into <span className="text-gradient-warm">clarity</span>
@@ -666,7 +666,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-indigo-500/20 bg-gradient-to-b from-[#FDF3E9] to-[#FBDDC8]">
+      <footer className="border-t border-indigo-500/20 bg-gradient-to-b from-[#0C0B20] to-[#12102E]">
         <div className="mx-auto max-w-6xl px-5 py-14">
           <div className="text-center">
             <SectionPill>Download Apps</SectionPill>

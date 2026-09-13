@@ -115,7 +115,7 @@ export default function Analytics() {
           </div>
         </div>
 
-        <div className="mt-5 rounded-2xl border border-indigo-500/20 bg-gradient-to-b from-[#FEF6EC] to-white p-5" data-testid="highlights-feed">
+        <div className="mt-5 rounded-2xl border border-indigo-500/20 bg-gradient-to-b from-[#15143A] to-[#101024] p-5" data-testid="highlights-feed">
           <h2 className="text-[13px] font-bold text-slate-200">Daily highlights</h2>
           <div className="mt-3 space-y-2">
             {data?.highlights.map((h) => (

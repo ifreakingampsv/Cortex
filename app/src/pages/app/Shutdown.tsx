@@ -94,7 +94,7 @@ export default function Shutdown() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-indigo-500/20 bg-gradient-to-b from-[#FEF6EC] to-white p-5">
+        <section className="rounded-2xl border border-indigo-500/20 bg-gradient-to-b from-[#15143A] to-[#101024] p-5">
           <h2 className="text-[13px] font-bold text-slate-200">Today's highlight</h2>
           <p className="mt-0.5 text-[12.5px] text-slate-500">What went well? What are you proud of? (Saved to your team's highlights.)</p>
           <textarea
